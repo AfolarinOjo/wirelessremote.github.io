@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetooth Remote Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bluetooth Remote Control</h1>
+    <button id="connect">Connect to Device</button>
+    <div id="status"></div>
+    <div id="controls" style="display: none;">
+        <h2>Controls</h2>
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <button id="stop">Stop</button>
+    </div>
+
+    <script>
+        let bluetoothDevice;
+        let server;
+
+        document.getElementById('connect').addEventListener('click', async () => {
+            try {
+                // Request Bluetooth device
+                bluetoothDevice = await navigator.bluetooth.requestDevice({
+                    filters: [{ services: ['your_service_uuid'] }] // Replace with your service UUID
+                });
+
+                // Connect to GATT server
+                server = await bluetoothDevice.gatt.connect();
+                document.getElementById('status').innerText = 'Connected to ' + bluetoothDevice.name;
+                document.getElementById('controls').style.display = 'block';
+            } catch (error) {
+                document.getElementById('status').innerText = 'Connection failed: ' + error;
+            }
+        });
+
+        document.getElementById('play').addEventListener('click', () => sendCommand('play'));
+        document.getElementById('pause').addEventListener('click', () => sendCommand('pause'));
+        document.getElementById('stop').addEventListener('click', () => sendCommand('stop'));
+
+        async function sendCommand(command) {
+            if (!server) {
+                alert('Please connect to a device first.');
+                return;
+            }
+
+            try {
+                const service = await server.getPrimaryService('your_service_uuid'); // Replace with your service UUID
+                const characteristic = await service.getCharacteristic('your_characteristic_uuid'); // Replace with your characteristic UUID
+                const commandData = new TextEncoder().encode(command);
+                await characteristic.writeValue(commandData);
+                document.getElementById('status').innerText = 'Sent command: ' + command;
+            } catch (error) {
+                document.getElementById('status').innerText = 'Error sending command: ' + error;
+            }
+        }
+    </script>
+</body>
+</html>
