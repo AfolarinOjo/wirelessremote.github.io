@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Sensor Control</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .control-container {
+            width: 500px;
+            padding: 40px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .sensor {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sensor h2 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        .sensor-value {
+            font-size: 2.5rem;
+            color: #ff5722;
+        }
+
+        .sensor-data {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .manual-override {
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .manual-override:hover {
+            background-color: #e68900;
+        }
+
+        .set-controls {
+            margin-top: 30px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .set-controls h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-size: 1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="control-container">
+        <h1>Manual Sensor Control</h1>
+
+        <div class="sensor-data">
+            <div class="sensor">
+                <h2>Temperature</h2>
+                <div class="sensor-value" id="temp-value">--</div>°C
+            </div>
+            <div class="sensor">
+                <h2>Humidity</h2>
+                <div class="sensor-value" id="humidity-value">--</div>%
+            </div>
+        </div>
+
+        <button class="manual-override" id="override-btn">Manual Override</button>
+
+        <!-- New Section to Set Temperature and Humidity -->
+        <div class="set-controls">
+            <h2>Set Temperature & Humidity</h2>
+            <div class="input-group">
+                <label for="set-temp">Set Temperature (°C):</label>
+                <input type="number" id="set-temp" placeholder="Enter temperature">
+            </div>
+            <div class="input-group">
+                <label for="set-humidity">Set Humidity (%):</label>
+                <input type="number" id="set-humidity" placeholder="Enter humidity">
+            </div>
+            <button class="submit-btn" id="submit-settings">Submit Settings</button>
+        </div>
+
+        <div class="back-link">
+            <p><a href="bluetooth.html">Back to Bluetooth Connection</a></p>
+        </div>
+    </div>
+
+    <script src="manual-control.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetooth Connection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .bluetooth-container {
+            width: 400px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .status {
+            font-size: 1.2rem;
+            color: #ff5722;
+            margin-bottom: 25px;
+        }
+
+        .connect-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .connect-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .manual-nav {
+            margin-top: 30px;
+            font-size: 1rem;
+        }
+
+        .manual-nav a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .manual-nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="bluetooth-container">
+        <h1>Bluetooth Connection</h1>
+
+        <div class="status">Status: <span id="status-text">Disconnected</span></div>
+        <button class="connect-btn" id="connect-btn">Connect to Bluetooth</button>
+
+        <div class="manual-nav">
+            <p>Want to manually control sensors? <a href="manual-control.html">Go to Manual Control</a></p>
+        </div>
+    </div>
+
+    <script src="bluetooth.js"></script>
+</body>
+</html>
+    
